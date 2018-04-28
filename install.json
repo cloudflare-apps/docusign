@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json.schemastore.org/install",
+  "resources": {
+    "body": [
+      {
+        "type": "style",
+        "src": "./source/app.css"
+      },
+      {
+        "type": "script",
+        "src": "./source/app.js"
+      }
+    ]
+  },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["_default"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+  },
+  "hooks": [
+    {
+      "endpoint": "https://igotthe.info/docusign",
+      "events": ["option-change:account"],
+      "block": true,
+      "authenticate": ["account"]
+    },
+    {
+      "endpoint": "https://igotthe.info/docusign",
+      "events": ["option-change:docusignAccount"],
+      "block": true,
+      "authenticate": ["account"]
+    },
+    {
+      "endpoint": "https://igotthe.info/docusign",
+      "events": ["option-change:powerform"],
+      "block": true,
+      "authenticate": ["account"]
+    }
+  ],
+  "options": {
+    "properties": {
+        "account": {
+          "title": "Docusign Account",
+          "type": "object",
+          "format": "account",
+          "services": ["docusign"],
+          "order": 0
+        },
+      "location": {
+        "title": "Message Location",
+        "description": "Where should the message appear?",
+        "order": 1,
+        "type": "object",
+        "format": "element",
+        "default": {
+          "selector": "body",
+          "method": "prepend"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+/* Set the app attribute to your app's dash-delimited alias. */
+cloudflare-app[app="docusign"] {
+  display: block;
+}
+
+cloudflare-app[app="docusign"] button {
+  display: block;
+  background: #1b49a0;
+  color: #FFFFFF;
+  padding: 0.8em;
+  border-radius: 0.6em;
+  margin: 1em;
+}
